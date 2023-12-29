@@ -1,0 +1,25 @@
+{
+  "name": "main-backend",
+  "version": "1.0.0",
+  "description": "a backend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev":"nodemon src/index.js"
+  },
+  "keywords": [
+    "javascript",
+    "backend",
+    "node"
+  ],
+  "author": "Satendra Singh",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^8.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
