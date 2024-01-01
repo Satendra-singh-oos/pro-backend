@@ -11,7 +11,7 @@ connectDb()
   .then(() => {
     app.listen(process.env.PORT || 8080, () => {
       console.log(
-        `Server is up and running at port : ${process.env.PORT || 8080}`
+        `Server is up and running at port : ${process.env.PORT || 8000}`
       );
     });
 
