@@ -7,6 +7,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_CLOUD_SECRET,
 });
 
+// TODO: reduce the file size
 const uploadOnCloudinary = async (localFilePath) => {
   try {
     if (!localFilePath) {
@@ -18,8 +19,11 @@ const uploadOnCloudinary = async (localFilePath) => {
       resource_type: "auto",
     });
 
-    // file has been uploded succesfully
-    console.log("file is uploaded on succefully", response.url);
+    // file has been uploded succesfully and then unlink
+    // console.log("file is uploaded on succefully", response.url);
+    // console.log("\n Response : \n", response);
+
+    fs.unlinkSync(localFilePath);
 
     return response;
   } catch (error) {
