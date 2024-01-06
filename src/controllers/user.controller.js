@@ -192,7 +192,7 @@ const logoutUser = asyncHandler(async (req, res) => {
 const refreshAccessToken = asyncHandler(async (req, res) => {
   try {
     const incomingRequestToken =
-      req.cookie.refreshToken ||
+      req.cookies.refreshToken ||
       req.body.refreshToken ||
       req.headers.refreshToken;
 
@@ -430,7 +430,7 @@ const getUserChannelProfile = asyncHandler(async (req, res) => {
           subscriberCount: {
             $size: "$subscribers",
           },
-          chaneelsSubscribedToCount: {
+          channelsSubscribedToCount: {
             $size: "$subscribedTo",
           },
           isSubscribed: {
@@ -448,7 +448,7 @@ const getUserChannelProfile = asyncHandler(async (req, res) => {
           fullName: 1,
           userName: 1,
           subscriberCount: 1,
-          chaneelsSubscribedToCount: 1,
+          channelsSubscribedToCount: 1,
           isSubscribed: 1,
           avatar: 1,
           coverImage: 1,
@@ -482,7 +482,8 @@ const getWatchHistory = asyncHandler(async (req, res) => {
         $match: {
           _id: new mongoose.Types.ObjectId(req.user?._id),
         },
-
+      },
+      {
         $lookup: {
           from: "video",
           localField: "watchHistory",
